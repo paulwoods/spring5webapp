@@ -1,9 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Unit Tests') {
       steps {
-        echo 'hello, world'
+        sh 'gradlew test'
+      }
+    }
+    stage('Package') {
+      steps {
+        sh 'gradlew bootJar'
       }
     }
   }
