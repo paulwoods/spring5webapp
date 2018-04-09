@@ -2,8 +2,17 @@ pipeline {
   agent any
   stages {
     stage('Unit Tests') {
-      steps {
-        sh './gradlew test'
+      parallel {
+        stage('clean') {
+          steps {
+            sh 'mvn clean'
+          }
+        }
+        stage('test') {
+          steps {
+            sh 'mvn test'
+          }
+        }
       }
     }
     stage('Package') {
