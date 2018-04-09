@@ -2,16 +2,15 @@ pipeline {
   agent any
   stages {
     stage('Unit Tests') {
-      parallel {
-        stage('clean') {
-          steps {
-            bat 'mvn clean'
-          }
+      stage('clean') {
+        steps {
+          bat 'maven3'
+          bat 'mvn clean'
         }
-        stage('test') {
-          steps {
-            bat 'mvn test'
-          }
+      }
+      stage('test') {
+        steps {
+          bat 'mvn test'
         }
       }
     }
