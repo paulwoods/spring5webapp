@@ -1,13 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('init') {
+    stage('tools') {
       steps {
         bat 'maven3'
-      }
-    }
-    stage('clean') {
-      steps {
         bat 'mvn clean'
       }
     }
